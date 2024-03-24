@@ -1,0 +1,144 @@
+[3/16 12:31 PM] Chaudhuri, Akashdeep (Contractor)
+USE [pharmacy]
+
+GO
+ 
+/****** Object:  Table [dbo].[Med_details]    Script Date: 3/15/2024 8:02:06 PM ******/
+
+SET ANSI_NULLS ON
+
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+
+GO
+ 
+CREATE TABLE [dbo].[Med_details](
+
+	[MedCode] [varchar](50) NOT NULL,
+
+	[MedName] [varchar](50) NOT NULL,
+
+	[MedPrice] [int] NOT NULL,
+
+	[MedStock] [int] NOT NULL,
+
+	[MedExpDate] [date] NOT NULL,
+
+	[MedCategory] [int] NOT NULL,
+
+CONSTRAINT [PK_Med_details] PRIMARY KEY CLUSTERED 
+
+(
+
+	[MedCode] ASC
+
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY]
+
+GO
+ 
+ALTER TABLE [dbo].[Med_details]  WITH CHECK ADD  CONSTRAINT [FK_Med_details_Category_details] FOREIGN KEY([MedCategory])
+
+REFERENCES [dbo].[Category_details] ([CatId])
+
+GO
+ 
+ALTER TABLE [dbo].[Med_details] CHECK CONSTRAINT [FK_Med_details_Category_details]
+
+GO
+ 
+ 
+[3/16 12:31 PM] Chaudhuri, Akashdeep (Contractor)
+USE [pharmacy]
+
+GO
+ 
+/****** Object:  Table [dbo].[Seller_details]    Script Date: 3/15/2024 8:05:05 PM ******/
+
+SET ANSI_NULLS ON
+
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+
+GO
+ 
+CREATE TABLE [dbo].[Seller_details](
+
+	[SelId] [int] IDENTITY(1,1) NOT NULL,
+
+	[SelName] [varchar](50) NOT NULL,
+
+	[SelEmail] [varchar](50) NOT NULL,
+
+	[SelPwd] [varchar](50) NOT NULL,
+
+	[SelDOB] [date] NOT NULL,
+
+	[SelGen] [varchar](50) NOT NULL,
+
+	[SelAdd] [varchar](50) NOT NULL,
+
+CONSTRAINT [PK_Seller_details] PRIMARY KEY CLUSTERED 
+
+(
+
+	[SelId] ASC
+
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY]
+
+GO
+ 
+ 
+[3/16 12:31 PM] Chaudhuri, Akashdeep (Contractor)
+USE [pharmacy]
+
+GO
+ 
+/****** Object:  Table [dbo].[Billing_details]    Script Date: 3/15/2024 8:06:17 PM ******/
+
+SET ANSI_NULLS ON
+
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+
+GO
+ 
+CREATE TABLE [dbo].[Billing_details](
+
+	[BillId] [int] IDENTITY(1,1) NOT NULL,
+
+	[BillDate] [date] NOT NULL,
+
+	[Seller] [int] NOT NULL,
+
+	[Amount] [int] NOT NULL,
+
+CONSTRAINT [PK_Billing_details] PRIMARY KEY CLUSTERED 
+
+(
+
+	[BillId] ASC
+
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY]
+
+GO
+ 
+ALTER TABLE [dbo].[Billing_details]  WITH CHECK ADD  CONSTRAINT [FK_Billing_details_Seller_details] FOREIGN KEY([Seller])
+
+REFERENCES [dbo].[Seller_details] ([SelId])
+
+GO
+ 
+ALTER TABLE [dbo].[Billing_details] CHECK CONSTRAINT [FK_Billing_details_Seller_details]
+
+GO
+ 
+ 
