@@ -3,6 +3,40 @@ USE [pharmacy]
 
 GO
  
+/****** Object:  Table [dbo].[Category_details]    Script Date: 3/15/2024 7:59:46 PM ******/
+
+SET ANSI_NULLS ON
+
+GO
+ 
+SET QUOTED_IDENTIFIER ON
+
+GO
+ 
+CREATE TABLE [dbo].[Category_details](
+
+	[CatId] [int] IDENTITY(1000,1) NOT NULL,
+
+	[CatName] [varchar](50) NOT NULL,
+
+CONSTRAINT [PK_Category_details] PRIMARY KEY CLUSTERED 
+
+(
+
+	[CatId] ASC
+
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+
+) ON [PRIMARY]
+
+GO
+ 
+ 
+[3/16 12:31 PM] Chaudhuri, Akashdeep (Contractor)
+USE [pharmacy]
+
+GO
+ 
 /****** Object:  Table [dbo].[Med_details]    Script Date: 3/15/2024 8:02:06 PM ******/
 
 SET ANSI_NULLS ON
